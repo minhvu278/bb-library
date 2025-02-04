@@ -2,14 +2,12 @@ import { Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { LanguagesModule } from './languages/languages.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-// import { Languages } from './languages/entities/language.entity';
 import { APP_PIPE } from '@nestjs/core';
 import { AppService } from './app.service';
-// import { User } from './users/entities/users.entity';
 import { UsersModule } from './users/users.module';
 import { AuthorsModule } from './authors/authors.module';
-// import { Author } from './authors/entities/author.entity';
 import { BooksModule } from './books/books.module';
+import { CollectionModule } from './collection/collection.module';
 
 @Module({
   imports: [
@@ -23,6 +21,7 @@ import { BooksModule } from './books/books.module';
     UsersModule,
     AuthorsModule,
     BooksModule,
+    CollectionModule,
   ],
   controllers: [AppController],
   providers: [
