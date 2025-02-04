@@ -8,7 +8,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
-import { Book } from './entities/book.entity';
+import { CreateBookDto } from './dto/create-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Controller('books')
 export class BooksController {
@@ -25,12 +26,12 @@ export class BooksController {
   }
 
   @Post()
-  create(@Body() createBookDto: Partial<Book>) {
+  create(@Body() createBookDto: CreateBookDto) {
     return this.booksService.create(createBookDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updateBookDto: Partial<Book>) {
+  update(@Param('id') id: number, @Body() updateBookDto: UpdateBookDto) {
     return this.booksService.update(id, updateBookDto);
   }
 

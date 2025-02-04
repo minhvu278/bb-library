@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Book } from './entities/book.entity';
 import { Repository } from 'typeorm';
+import { CreateBookDto } from './dto/create-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Injectable()
 export class BooksService {
@@ -22,12 +24,12 @@ export class BooksService {
     });
   }
 
-  async create(createBookDto: Partial<Book>): Promise<Book> {
+  async create(createBookDto: CreateBookDto): Promise<Book> {
     const newBook = this.bookRepository.create(createBookDto);
     return this.bookRepository.save(newBook);
   }
 
-  async update(id: number, updateBookDto: Partial<Book>): Promise<Book | null> {
+  async update(id: number, updateBookDto: UpdateBookDto): Promise<Book | null> {
     await this.bookRepository.update(id, updateBookDto);
     return this.findOne(id);
   }
