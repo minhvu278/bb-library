@@ -1,5 +1,7 @@
 import { BaseEntity } from 'src/common/entities/base.entities';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { History } from 'src/history/entities/history.entity';
+import { Review } from 'src/reviews/entities/review.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User extends BaseEntity {
@@ -23,4 +25,10 @@ export class User extends BaseEntity {
 
   @Column()
   role: string;
+
+  @OneToMany(() => History, (history) => history.user)
+  history: History[];
+
+  @OneToMany(() => Review, (review) => review.user)
+  reviews: Review[];
 }
