@@ -7,17 +7,20 @@ import { APP_PIPE } from '@nestjs/core';
 import { AppService } from './app.service';
 import { User } from './users/entities/users.entity';
 import { UsersModule } from './users/users.module';
+import { AuthorsModule } from './authors/authors.module';
+import { Author } from './authors/entities/author.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [Languages, User],
+      entities: [Languages, User, Author],
       synchronize: true,
     }),
     LanguagesModule,
     UsersModule,
+    AuthorsModule,
   ],
   controllers: [AppController],
   providers: [
