@@ -1,6 +1,12 @@
 import { Book } from 'src/books/entities/book.entity';
 import { User } from 'src/users/entities/users.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Review {
@@ -13,7 +19,7 @@ export class Review {
   @Column({ nullable: true })
   comment: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn()
   created_at: Date;
 
   @ManyToOne(() => User, (user) => user.reviews)
