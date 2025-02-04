@@ -5,16 +5,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Languages } from './languages/entities/language.entity';
 import { APP_PIPE } from '@nestjs/core';
 import { AppService } from './app.service';
+import { User } from './users/entities/users.entity';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [Languages],
+      entities: [Languages, User],
       synchronize: true,
     }),
     LanguagesModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [
