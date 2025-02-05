@@ -8,6 +8,8 @@ import { UsersModule } from './users/users.module';
 import { AuthorsModule } from './authors/authors.module';
 import { BooksModule } from './books/books.module';
 import { CollectionModule } from './collection/collection.module';
+import { HistoryModule } from './history/history.module';
+import { ReviewsModule } from './reviews/reviews.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { CollectionModule } from './collection/collection.module';
     AuthorsModule,
     BooksModule,
     CollectionModule,
+    HistoryModule,
+    ReviewsModule,
   ],
   controllers: [AppController],
   providers: [

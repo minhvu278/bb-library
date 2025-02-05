@@ -32,7 +32,7 @@ export class CollectionService {
     return this.findOne(id);
   }
 
-  async delete(id: number) {
+  async delete(id: number): Promise<void> {
     await this.collectionRepository.delete(id);
   }
 }
