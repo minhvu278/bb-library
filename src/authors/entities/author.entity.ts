@@ -1,9 +1,8 @@
 import { Book } from 'src/books/entities/book.entity';
-import { BaseEntity } from 'src/common/entities/base.entities';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Languages extends BaseEntity {
+export class Author {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -11,8 +10,11 @@ export class Languages extends BaseEntity {
   name: string;
 
   @Column()
-  code: string;
+  bio: string;
 
-  @OneToMany(() => Book, (book) => book.language)
+  @Column()
+  nationality: string;
+
+  @OneToMany(() => Book, (book) => book.author)
   books: Book[];
 }

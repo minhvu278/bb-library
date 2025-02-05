@@ -3,16 +3,16 @@ import { BaseEntity } from 'src/common/entities/base.entities';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Languages extends BaseEntity {
+export class Collection extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
 
-  @Column()
-  code: string;
+  @Column({ nullable: true })
+  description: string;
 
-  @OneToMany(() => Book, (book) => book.language)
+  @OneToMany(() => Book, (book) => book.collection)
   books: Book[];
 }
