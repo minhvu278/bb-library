@@ -1,10 +1,9 @@
-import { BaseEntity } from 'src/common/entities/base.entities';
 import { History } from 'src/history/entities/history.entity';
 import { Review } from 'src/reviews/entities/review.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User extends BaseEntity {
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
