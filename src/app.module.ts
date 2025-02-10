@@ -10,6 +10,8 @@ import { BooksModule } from './books/books.module';
 import { CollectionModule } from './collection/collection.module';
 import { HistoryModule } from './history/history.module';
 import { ReviewsModule } from './reviews/reviews.module';
+import { AuthModule } from './auth/auth.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -19,6 +21,10 @@ import { ReviewsModule } from './reviews/reviews.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    JwtModule.register({
+      secret: 'your-secret-key',
+      signOptions: { expiresIn: '1h' },
+    }),
     LanguagesModule,
     UsersModule,
     AuthorsModule,
@@ -26,6 +32,7 @@ import { ReviewsModule } from './reviews/reviews.module';
     CollectionModule,
     HistoryModule,
     ReviewsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
